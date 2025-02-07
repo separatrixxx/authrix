@@ -1,0 +1,7 @@
+{
+    "certNumber": "AUTHRIX-IHPD-WJE8-BHBB",
+    "domain": "localhost:3000",
+    "status": "active",
+    "issuedAt": 0,
+    "expiresAt": 31536000000
+}

@@ -1,5 +1,6 @@
 # authrix_contract
 
+### Install dependencies first: `npm install`
 
 ### To start use:
 - `near login` - login to NEAR network
