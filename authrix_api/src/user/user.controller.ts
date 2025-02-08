@@ -30,9 +30,9 @@ export class UserController {
     const publicKey = await this.userService.getUserPublicKey(username);
 
     if (publicKey) {
-      return { message: 'User found', publicKey };
+      return { message: 'USER_FOUND', publicKey };
     } else {
-      return { message: 'User not found' };
+      return { message: 'USER_NOT_FOUND' };
     }
   }
 

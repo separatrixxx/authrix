@@ -1,4 +1,4 @@
-import { connect, keyStores, Near } from 'near-api-js';
+import { connect, KeyPair, keyStores, Near } from 'near-api-js';
 import { homedir } from 'os';
 import { join } from 'path';
 
