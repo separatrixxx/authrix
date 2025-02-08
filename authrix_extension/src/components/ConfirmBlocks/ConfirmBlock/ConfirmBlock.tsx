@@ -1,3 +1,4 @@
+import styles from './ConfirmBlock.module.css';
 import { ConfirmBlockProps } from './ConfirmBlock.props';
 import { useState } from 'react';
 import { Htag } from 'components/Common/Htag/Htag';
@@ -12,7 +13,7 @@ export const ConfirmBlock = ({ isAuthorized, serviceMessage }: ConfirmBlockProps
 
     if (!isAuthorized) {
         return (
-            <Htag tag='xl'>
+            <Htag tag='xl' className={styles.confirmTitle}>
                 {ru.you_need_to_auth_to_confirm_requests}
             </Htag>
         );
@@ -20,7 +21,7 @@ export const ConfirmBlock = ({ isAuthorized, serviceMessage }: ConfirmBlockProps
 
     return (
         <>
-            <Htag tag='xl'>
+            <Htag tag='xl' className={styles.confirmTitle}>
                 {ru[!isConfirmed ? 'auth_request' : 'enter_private_key']}
             </Htag>
             {

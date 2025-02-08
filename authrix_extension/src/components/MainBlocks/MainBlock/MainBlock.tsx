@@ -13,7 +13,7 @@ export const MainBlock = (): JSX.Element => {
 
     return (
         <>
-            <Htag tag='xl'>
+            <Htag tag='xl' className={styles.mainTitle}>
                 {ru[type === 'generate' ? 'first_generate_keys' : type === 'auth' ? 'now_login' : 'or_recover']}
             </Htag>
             {
