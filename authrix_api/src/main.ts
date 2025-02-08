@@ -18,7 +18,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document); // API будет доступно по /api
 
-  await app.listen(3001);
+  await app.listen(process.env.PORT || 10000);
 }
 
 bootstrap();
