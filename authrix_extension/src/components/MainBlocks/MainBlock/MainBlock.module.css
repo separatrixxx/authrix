@@ -1,0 +1,18 @@
+.goToText {
+    font-weight: 500;
+    cursor: pointer;
+    transition-duration: 300ms;
+    color: var(--darkLight) !important;
+    margin-top: -14px !important;
+}
+
+.marginText {
+    margin-top: 30px !important;
+}
+
+.goToText:active,
+.goToText:hover {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+    filter: brightness(0.8);
+}

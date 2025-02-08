@@ -1,8 +1,35 @@
-# authrix_contract
+# authrix contract
 
-### Install dependencies first: `npm install`
+Смарт-контракт для децентрализованной системы авторизации, реализованный на платформе NEAR Protocol. Контракт обеспечивает хранение и управление ключами пользователей и сервисов в сети NEAR.
 
-### To start use:
-- `near login` - login to NEAR network
-- `npm run build` - building the project
-- `near deploy authrix.testnet build/authrix_contract.wasm` - deploy contract to NEAR network
+## Системные требования
+- Node.js 16+
+- npm 8+
+- NEAR CLI
+
+## Установка
+Установка зависимостей проекта:
+```bash
+npm install
+```
+
+## Подготовка к работе
+Для начала работы с контрактом необходимо:
+
+1. Авторизоваться в сети NEAR:
+```bash
+near login
+```
+
+2. Собрать проект:
+```bash
+npm run build
+```
+
+3. Развернуть контракт в сети NEAR:
+```bash
+near deploy authrix.testnet build/authrix_contract.wasm
+```
+
+## Лицензия
+MIT

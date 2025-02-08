@@ -1,0 +1,33 @@
+.keysBlock {
+    width: 100%;
+    display: grid;
+    gap: 16px;
+}
+
+.text {
+	color: var(--darkLight);
+}
+
+.mnemonic {
+	width: calc(100% - 32px);
+    max-width: 320px;
+    word-wrap: break-word;
+    hyphens: auto;
+	padding: 15px 16px;
+
+	transition-duration: 300ms;
+
+	color: var(--darkLight) !important;
+	border-radius: 8px;
+	background: var(--light) !important;
+    cursor: pointer;
+}
+
+.mnemonic:active,
+.mnemonic:focus,
+.mnemonic:hover {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	filter: brightness(0.9);
+}
+

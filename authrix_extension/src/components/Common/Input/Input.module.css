@@ -1,0 +1,32 @@
+.input {
+	width: calc(100% - 32px);
+	padding: 15px 16px;
+
+	transition-duration: 300ms;
+
+	color: var(--primary) !important;
+	border: none;
+	border-radius: 8px;
+	outline: 2px solid var(--light);
+	outline-offset: -2px;
+	background: var(--light) !important;
+
+	font-size: 18px;
+	font-weight: 600 !important;
+}
+
+.input::placeholder {
+	color: var(--darkLight);
+}
+
+.input:active,
+.input:focus,
+.input:hover {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	filter: brightness(0.9);
+}
+
+.error {
+	outline-color: var(--error);
+}

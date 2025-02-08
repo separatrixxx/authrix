@@ -1,0 +1,15 @@
+.welcomeBlock {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+    align-items: center;
+}
+
+.welcomeText {
+    color: var(--darkLight);
+}
+
+.welcomeText > span {
+    color: var(--primary);
+    font-weight: 800;
+}

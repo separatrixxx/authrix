@@ -1,0 +1,5 @@
+.authBlock {
+    width: 100%;
+    display: grid;
+    gap: 16px;
+}

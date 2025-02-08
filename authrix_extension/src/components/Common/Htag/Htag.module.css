@@ -1,0 +1,33 @@
+.xl,
+.l,
+.m,
+.s,
+.xs {
+	width: fit-content;
+	margin: 0;
+
+	color: var(--primary);
+	font-style: normal;
+	font-weight: 600;
+}
+
+.xl {
+	font-size: 32px;
+	font-weight: 800;
+	line-height: 38px;
+}
+
+.l {
+	font-size: 26px;
+	line-height: 30px;
+}
+
+.m {
+	font-size: 16px;
+	line-height: 20px;
+}
+
+.s {
+	font-size: 12px;
+	line-height: 16px;
+}
