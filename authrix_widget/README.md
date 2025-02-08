@@ -11,35 +11,45 @@ npm install authrix-widget
 ## Интерфейсы и типы
 
 ```tsx
-interface AuthData {
-  signData: {
-    username: string,
-    timestamp: number,
-    domainHash: string,
-  },
-  signature: string,
+interface SignData {
+    username: string;
+    publicKeyHash: string;
+    timestamp: number;
 }
 
+interface AuthResponseData {
+    signData: SignData;
+    userSignature: string;
+    serviceSignature: string;
+}
+
+interface AuthRejectedData {
+    message: 'AUTH_REJECTED';
+}
+
+type AuthWidgetData = AuthResponseData | AuthRejectedData;
+
 interface AuthrixWidgetProps {
-  locale?: 'ru' | 'en',
-  text?: {
-    buttonText?: string,
-    confirmationText?: string,
-  },
-  onAuthData?: (data: AuthData) => void,
+    locale?: 'ru' | 'en',
+    text?: {
+        buttonText?: string;
+        confirmationText?: string;
+    },
+    isAuthenticating?: boolean,
+    onAuthData?: (data: AuthWidgetData) => void,
 }
 
 interface AuthRequestEvent {
-  detail: {
-    message: string,
-    domain: string,
-  },
+    detail: {
+        message: string,
+        domain: string,
+    },
 }
 
 interface AuthResponseMessage {
-  source: 'authrix-content-script';
-  type: 'AUTH_RESPONSE';
-  data: AuthData;
+    source: 'authrix-content-script';
+    type: 'AUTH_RESPONSE';
+    data: AuthWidgetData;
 }
 ```
 
@@ -48,79 +58,87 @@ interface AuthResponseMessage {
 ### Базовый пример
 
 ```tsx
-import {AuthrixWidget } from 'authrix-widget';
+import { AuthrixWidget } from 'authrix-widget';
 
 
 const App: React.FC = () => {
-  const handleAuthData = (data: AuthData): void => {
-    console.log('Данные авторизации:', data);
-  };
+    const handleAuthData = (data: AuthWidgetData): void => {
+        console.log('Данные авторизации:', data);
+    };
 
-  return (
-    <AuthrixWidget 
-      locale="ru"
-      onAuthData={handleAuthData}
-      text={{
-        buttonText: 'Войти через authrix',
-        confirmationText: 'Подтвердите вход'
-      }}
-    />
-  );
+    return (
+        <AuthrixWidget 
+            locale="ru"
+            onAuthData={handleAuthData}
+            text={{
+                buttonText: 'Войти через authrix',
+                confirmationText: 'Подтвердите вход'
+            }}
+        />
+    );
 }
 ```
 
-### Расширенный пример с состоянием
+### Расширенный пример с верификацией подписи
 
 ```tsx
 import { AuthrixWidget } from 'authrix-widget';
 import { useState } from 'react';
-import { verifySignature } from '../helpers//verify';
+import { createHMACSignature } from '../helpers/crypto.helper';
+import { AuthResponseData, AuthWidgetData } from '../interfaces/auth.interface';
 
-interface UserState {
-  username: string;
-  timestamp: number;
+function isAuthResponseData(data: AuthWidgetData): data is AuthResponseData {
+    return 'signData' in data;
 }
 
 const AuthPage: React.FC = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-  const [userData, setUserData] = useState<UserState | null>(null);
+    const [isAuthenticating, setIsAuthenticating] = useState<boolean>(false);
+    const serviceKey = 'your_service_key';
 
+    const handleAuthData = async (data: AuthWidgetData): Promise<void> => {
+        // Обработка отказа в авторизации
+        if ('message' in data && data.message === 'AUTH_REJECTED') {
+            setIsAuthenticating(false);
+            return;
+        }
 
-  const handleAuthData = async (data: AuthData): Promise<void> => {
-    try {
-      const isValid = await verifySignature(data);
-      
-      if (isValid) {
-        setIsAuthenticated(true);
-        setUserData({
-          username: data.signData.username,
-          timestamp: data.signData.timestamp
-        });
-      }
-    } catch (error) {
-      console.error('Ошибка верификации:', error);
-    }
-  };
+        if (!isAuthResponseData(data)) {
+            return;
+        }
 
-  return (
-    <div>
-      {!isAuthenticated ?
-        <AuthrixWidget
-          locale="ru"
-          onAuthData={handleAuthData}
-          text={{
-            buttonText: 'Войти через authrix',
-            confirmationText: 'Подтвердите вход на сайт'
-          }}
-        />
-      :
+        const { signData, userSignature, serviceSignature } = data;
+        const dataString = JSON.stringify(signData);
+    
+        // Проверка подписи пользователя
+        const verificationSignature = await createHMACSignature(dataString, signData.publicKeyHash);
+        const isUserSignatureValid = userSignature === verificationSignature;
+    
+        // Проверка подписи сервиса
+        const verificationServiceSignature = await createHMACSignature(dataString, serviceKey);
+        const isServiceSignatureValid = serviceSignature === verificationServiceSignature;
+    
+        if (isServiceSignatureValid && isUserSignatureValid) {
+            console.log('Авторизация успешна');
+            setIsAuthenticating(true);
+        } else {
+            const errorMessage = !isServiceSignatureValid ? 'Ошибка подписи сервиса' : 'Ошибка подписи пользователя';
+            console.error(errorMessage);
+        }
+    };
+
+    return (
         <div>
-          <p>Добро пожаловать, {userData?.username}!</p>
-          <p>Время входа: {new Date(userData?.timestamp || 0).toLocaleString()}</p>
+            <AuthrixWidget
+                locale="ru"
+                isAuthenticating={isAuthenticating}
+                onAuthData={handleAuthData}
+                text={{
+                    buttonText: 'Войти через authrix',
+                    confirmationText: 'Подтвердите вход на сайт'
+                }}
+            />
         </div>
-      }
-    </div>
-  );
+    );
 }
 ```
 
@@ -128,26 +146,27 @@ const AuthPage: React.FC = () => {
 
 ```tsx
 window.addEventListener('authrix-request', (event: CustomEvent<AuthRequestEvent['detail']>) => {
-  const { message, domain } = event.detail;
-  
-  console.log(`Запрос авторизации от домена ${domain}: ${message}`);
+    const { message, domain } = event.detail;
+    console.log(`Запрос авторизации от домена ${domain}: ${message}`);
 });
 
-const sendAuthResponse = (data: AuthData): void => {
-  window.postMessage({
-    source: 'authrix-content-script',
-    type: 'AUTH_RESPONSE',
-    data
-  } as AuthResponseMessage, '*');
+const sendAuthResponse = (data: AuthWidgetData): void => {
+    window.postMessage({
+        source: 'authrix-content-script',
+        type: 'AUTH_RESPONSE',
+        data
+    } as AuthResponseMessage, '*');
 };
 ```
 
 ## Пропсы
 
-| Проп     | Тип                  | По умолчанию | Описание                    |
-|----------|---------------------|--------------|----------------------------|
-| locale   | 'ru' \| 'en'        | 'en'         | Язык виджета              |
-| text     | { buttonText?: string, confirmationText?: string } | {} | Кастомные тексты |
+| Проп | Тип | По умолчанию | Описание |
+|------|-----|--------------|----------|
+| locale | 'ru' \| 'en' | 'en' | Язык виджета |
+| text | { buttonText?: string, confirmationText?: string } | {} | Кастомные тексты |
+| isAuthenticating | boolean | false | Состояние авторизации (блокирует кнопку и меняет текст) |
+| onAuthData | (data: AuthWidgetData) => void | undefined | Callback для получения данных авторизации |
 
 ## События
 

@@ -23,5 +23,5 @@ export async function createHMACSignature(data: string, key: string): Promise<st
         messageData
     );
 
-    return Buffer.from(signature).toString('base64');
+    return Buffer.from(signature).toString('hex');
 }

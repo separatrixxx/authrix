@@ -15,13 +15,3 @@ export interface AuthRejectedData {
 }
 
 export type AuthWidgetData = AuthResponseData | AuthRejectedData;
-
-export interface AuthrixWidgetProps {
-    locale?: 'ru' | 'en',
-    text?: {
-        buttonText?: string;
-        confirmationText?: string;
-    },
-    isAuthenticating?: boolean,
-    onAuthData?: (data: AuthWidgetData) => void,
-}

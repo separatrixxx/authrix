@@ -8,6 +8,44 @@ export class ServiceService {
     private readonly contractId = 'authrix.testnet';
     private readonly networkId = 'testnet';
 
+    // Check and update certificate status
+    // Проверка и обновление статуса сертификата
+    private async checkAndUpdateCertificateStatus(certificate: CertificateInterface): Promise<CertificateInterface> {
+        if (!certificate) return certificate;
+
+        const currentTime = Date.now();
+        const isExpired = currentTime >= certificate.expiresAt;
+
+        if (isExpired && certificate.status === 'active') {
+            try {
+                const near = await createNearConnection(this.networkId);
+                const account = await near.account(this.contractId);
+                
+                await account.functionCall({
+                    contractId: this.contractId,
+                    methodName: 'updateCertificateStatus',
+                    args: {
+                        certNumber: certificate.certNumber,
+                        status: 'expired'
+                    },
+                    gas: BigInt(30000000000000),
+                    attachedDeposit: BigInt(0),
+                });
+
+                return {
+                    ...certificate,
+                    status: 'expired'
+                };
+            } catch (error) {
+                console.error('Error updating certificate status:', error);
+
+                return certificate;
+            }
+        }
+
+        return certificate;
+    }
+
     // Get certificate information from NEAR
     // Получение информации о сертификате из NEAR
     async getCertificate(domain: string): Promise<CertificateInterface | null> {
@@ -33,7 +71,11 @@ export class ServiceService {
                 certificate = certificate.slice(1, -1);
             }
 
-            return certificate !== 'null' ? JSON.parse(certificate) : null;
+            if (certificate === 'null') return null;
+
+            const parsedCertificate = JSON.parse(certificate);
+            
+            return await this.checkAndUpdateCertificateStatus(parsedCertificate);
         } catch (error) {
             console.error('Error fetching certificate from NEAR:', error);
             throw new Error('Error fetching certificate from NEAR');
@@ -65,19 +107,11 @@ export class ServiceService {
                 certificate = certificate.slice(1, -1);
             }
 
-            if (certificate === 'null') {
-                return null;
-            }
+            if (certificate === 'null') return null;
 
-            const fullCertificate = JSON.parse(certificate);
-
-            // Возвращаем только нужные поля
-            return {
-                certNumber: fullCertificate.certNumber,
-                domain: fullCertificate.domain,
-                status: fullCertificate.status,
-            } as CertificateInterface;
-
+            const parsedCertificate = JSON.parse(certificate);
+            
+            return await this.checkAndUpdateCertificateStatus(parsedCertificate);
         } catch (error) {
             console.error('Error fetching certificate from NEAR:', error);
             throw new Error('Error fetching certificate from NEAR');
@@ -93,9 +127,6 @@ export class ServiceService {
 
             if (existingCert) {
                 const currentTime = Date.now();
-                console.log('Current time:', currentTime);
-                console.log('Certificate expire time:', existingCert.expiresAt);
-                console.log('Certificate status:', existingCert.status);
                 const isExpired = currentTime >= existingCert.expiresAt;
                 const isActive = existingCert.status === 'active';
 

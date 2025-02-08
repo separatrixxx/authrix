@@ -1,28 +1,45 @@
 import styles from './MainPage.module.css';
 import { Toaster } from 'react-hot-toast';
-import { AuthrixWidget } from '../../components/Widget';
 import { createHMACSignature } from '../../helpers/crypto.helper';
 import { ToastError, ToastSuccess } from '../../components/Common/Toast/Toast';
-import { ec } from 'elliptic';
+import { useState } from 'react';
+import { AuthResponseData, AuthWidgetData } from '../../interfaces/auth.interface';
+import { AuthrixWidget } from 'authrix-widget';
 
+
+export function isAuthResponseData(data: AuthWidgetData): data is AuthResponseData {
+    return 'signData' in data;
+}
 
 export const MainPage = (): JSX.Element => {
-    const serviceKey = '12345678';
+    const [isAuthenticating, setIsAuthenticating] = useState<boolean>(false);
     
-    const handleAuthData = async (data: any) => {
+    const serviceKey = 'm7ems1v3q3sk3vxhrbh7tytatnhikj4n';
+    
+    const handleAuthData = async (data: AuthWidgetData) => {
+        console.log(data)
+        if ('message' in data && data.message === 'AUTH_REJECTED') {
+            setIsAuthenticating(false);
+
+            return;
+        }
+
+        if (!isAuthResponseData(data)) {
+            return;
+        }
+
         const { signData, userSignature, serviceSignature } = data;
         const dataString = JSON.stringify(signData);
     
-        const verificationSignature = await createHMACSignature(dataString, serviceKey);
-        const isServiceSignatureValid = serviceSignature === verificationSignature;
+        const verificationSignature = await createHMACSignature(dataString, signData.publicKeyHash);
+        const isUserSignatureValid = userSignature === verificationSignature;
     
-        const secp256k1 = new ec('secp256k1');
-        const key = secp256k1.keyFromPublic(signData.publicKey, 'hex');
-        
-        const isUserSignatureValid = key.verify(dataString, userSignature);
+        const verificationServiceSignature = await createHMACSignature(dataString, serviceKey);
+        const isServiceSignatureValid = serviceSignature === verificationServiceSignature;
     
         if (isServiceSignatureValid && isUserSignatureValid) {
             ToastSuccess('ok');
+            setIsAuthenticating(true);
         } else {
             const errorMessage = !isServiceSignatureValid ? 'service signature error' : 'user signature error';
             ToastError(errorMessage);
@@ -39,7 +56,7 @@ export const MainPage = (): JSX.Element => {
                 }}
             />
             <div className={styles.wrapper}>
-                <AuthrixWidget onAuthData={handleAuthData} />
+                <AuthrixWidget isAuthenticating={isAuthenticating} onAuthData={handleAuthData} />
             </div>
         </>
     );
