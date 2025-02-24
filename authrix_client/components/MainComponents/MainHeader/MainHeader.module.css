@@ -4,7 +4,7 @@
 
 	width: calc(100% - 80px);
 	height: fit-content;
-	padding: 10px 40px;
+	padding: 20px 40px;
 	grid-template-columns: 1fr repeat(4, auto);
 	gap: 30px;
 }
@@ -19,6 +19,7 @@
 
 .headerLink {
 	transition-duration: 300ms;
+	margin-top: 14px !important;
 }
 
 .headerLink:active {
