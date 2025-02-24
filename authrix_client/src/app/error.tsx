@@ -1,5 +1,6 @@
 'use client'
 import { Metadata } from 'next';
+import { ReactNode } from 'react';
 
 
 export const metadata: Metadata = {
@@ -7,7 +8,7 @@ export const metadata: Metadata = {
 	description: 'authrix | 500',
 };
 
-export default function PageError(): JSX.Element {
+export default function PageError(): ReactNode {
 	return (
 		<div>500</div>
 	);

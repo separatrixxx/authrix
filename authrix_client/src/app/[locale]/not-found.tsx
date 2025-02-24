@@ -1,5 +1,6 @@
 import { ErrorPage } from '../../../page_components/ErrorPage/ErrorPage';
 import { Metadata } from 'next';
+import { ReactNode } from 'react';
 
 
 export const metadata: Metadata = {
@@ -7,7 +8,7 @@ export const metadata: Metadata = {
 	description: 'authrix | 404',
   };
 
-export default function PageNotFound(): JSX.Element {
+export default function PageNotFound(): ReactNode {
 	return (
 		<ErrorPage error={404} />
 	);
