@@ -1,10 +1,10 @@
+import { MainHeader } from '../../components/MainComponents/MainHeader/MainHeader';
 import styles from './MainPage.module.css';
 import { Toaster } from 'react-hot-toast';
-import { GeneratorBlock } from '../../components/GeneratorBlock/GeneratorBlock';
-import { Footer } from '../../components/Footer/Footer';
+import { ReactNode } from 'react';
 
 
-export const MainPage = (): JSX.Element => {
+export const MainPage = (): ReactNode => {
     return (
         <>
             <Toaster
@@ -15,8 +15,7 @@ export const MainPage = (): JSX.Element => {
                 }}
             />
             <div className={styles.wrapper}>
-                <GeneratorBlock />
-                {/* <Footer /> */}
+                <MainHeader />
             </div>
         </>
     );

@@ -1,5 +1,3 @@
-.xxxl,
-.xxl,
 .xl,
 .l,
 .m,
@@ -7,66 +5,43 @@
 	width: fit-content;
 	margin: 0;
 
-	color: var(--textDark);
-}
+	color: var(--darkLight);
 
-.xxxl {
-	font-size: 80px;
-	font-weight: 700;
-	font-style: normal;
-	line-height: normal;
-}
-
-.xxl {
-	font-size: 60px;
-	font-weight: 700;
 	font-style: normal;
 	line-height: normal;
 }
 
 .xl {
-	font-size: 50px;
-	font-weight: 400;
-	font-style: normal;
+	font-size: 64px;
+	font-weight: 900;
 }
 
 .l {
-	font-size: 40px;
-	font-weight: 400;
-	font-style: normal;
+	font-size: 32px;
+	font-weight: 600;
 }
 
 .m {
-	font-size: 26px;
-	font-weight: 400;
-	font-style: normal;
+	font-size: 24px;
+	font-weight: 500;
 }
 
 .s {
-	font-size: 18px;
+	font-size: 20px;
 	font-weight: 400;
-	font-style: normal;
 }
 
 @media (max-width: 1024px) {
-	.xxxl {
-		font-size: 60px;
-	}
-
-	.xxl {
-		font-size: 40px;
-	}
-
 	.xl {
-		font-size: 30px;
+		font-size: 48px;
 	}
 
 	.l {
-		font-size: 20px;
+		font-size: 28px;
 	}
 
 	.m {
-		font-size: 22px;
+		font-size: 20px;
 	}
 
 	.s {
@@ -75,53 +50,37 @@
 }
 
 @media (max-width: 580px) {
-	.xxxl {
-		font-size: 50px;
-	}
-
-	.xxl {
-		font-size: 30px;
-	}
-
 	.xl {
-		font-size: 20px;
+		font-size: 32px;
 	}
 
 	.l {
-		font-size: 17px;
+		font-size: 20px;
 	}
 
 	.m {
-		font-size: 12px;
+		font-size: 16px;
 	}
 
 	.s {
-		font-size: 9px;
+		font-size: 14px;
 	}
 }
 
 @media (max-width: 300px) {
-	.xxxl {
-		font-size: 40px;
-	}
-
-	.xxl {
-		font-size: 20px;
-	}
-
 	.xl {
-		font-size: 15px;
+		font-size: 28px;
 	}
 
 	.l {
-		font-size: 12px;
+		font-size: 18px;
 	}
 
 	.m {
-		font-size: 7px;
+		font-size: 14px;
 	}
 
 	.s {
-		font-size: 6px;
+		font-size: 12px;
 	}
 }

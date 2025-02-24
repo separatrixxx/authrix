@@ -7,7 +7,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors();
 
-  // Настройка Swagger
   const config = new DocumentBuilder()
     .setTitle('Key Management API')
     .setDescription('API для управления ключами и пользователей')
@@ -16,9 +15,9 @@ async function bootstrap() {
     .addTag('user')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document); // API будет доступно по /api
+  SwaggerModule.setup('api', app, document);
 
-  await app.listen(process.env.PORT || 10000);
+  await app.listen(process.env.PORT || 3001);
 }
 
 bootstrap();

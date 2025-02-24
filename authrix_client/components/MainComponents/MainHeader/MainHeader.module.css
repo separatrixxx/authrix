@@ -1,0 +1,36 @@
+.mainHeader {
+	display: grid;
+	align-items: center;
+
+	width: calc(100% - 80px);
+	height: fit-content;
+	padding: 10px 40px;
+	grid-template-columns: 1fr repeat(4, auto);
+	gap: 30px;
+}
+
+.mainHeader > a {
+	cursor: pointer;
+}
+
+.headerText {
+	color: var(--white) !important;
+}
+
+.headerLink {
+	transition-duration: 300ms;
+}
+
+.headerLink:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	filter: brightness(0.9);
+}
+
+@media (min-width: 1024px) {
+	.headerLink:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		filter: brightness(0.9);
+	}
+}
