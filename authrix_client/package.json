@@ -24,6 +24,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.1.7",
+    "framer-motion": "^12.4.7",
     "next-intl": "^3.26.5",
     "react-hot-toast": "^2.5.2",
     "stylelint": "^13.0.0",
