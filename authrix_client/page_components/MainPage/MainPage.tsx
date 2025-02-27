@@ -1,7 +1,7 @@
-import { MainHeader } from '../../components/MainComponents/MainHeader/MainHeader';
 import styles from './MainPage.module.css';
 import { Toaster } from 'react-hot-toast';
 import { ReactNode } from 'react';
+import { Header } from '../../components/HeaderComponents/Header/Header';
 
 
 export const MainPage = (): ReactNode => {
@@ -15,7 +15,7 @@ export const MainPage = (): ReactNode => {
                 }}
             />
             <div className={styles.wrapper}>
-                <MainHeader />
+                <Header />
             </div>
         </>
     );

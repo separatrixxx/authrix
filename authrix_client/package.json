@@ -11,13 +11,13 @@
     "check": "stylelint \"**/*.css\" --fix && next lint && next build"
   },
   "dependencies": {
+    "@svgr/webpack": "^8.1.0",
     "next": "15.1.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@svgr/webpack": "^8.1.0",
     "@types/classnames": "^2.3.4",
     "@types/node": "^20",
     "@types/react": "^19",

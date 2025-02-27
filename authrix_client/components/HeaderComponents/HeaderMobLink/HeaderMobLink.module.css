@@ -1,24 +1,7 @@
-.mainHeader {
-	display: grid;
-	align-items: center;
-
-	width: calc(100% - 80px);
-	height: fit-content;
-	padding: 20px 40px;
-	grid-template-columns: 1fr repeat(4, auto);
-	gap: 30px;
-}
-
-.mainHeader > a {
-	cursor: pointer;
-}
-
-.headerText {
-	color: var(--white) !important;
-}
-
 .headerLink {
 	transition-duration: 300ms;
+
+	color: var(--white) !important;
 }
 
 .headerLink:active {

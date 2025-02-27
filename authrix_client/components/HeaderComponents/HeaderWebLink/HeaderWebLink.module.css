@@ -1,0 +1,19 @@
+.headerLink {
+	transition-duration: 300ms;
+
+	color: var(--white) !important;
+}
+
+.headerLink:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	filter: brightness(0.9);
+}
+
+@media (min-width: 1024px) {
+	.headerLink:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		filter: brightness(0.9);
+	}
+}
