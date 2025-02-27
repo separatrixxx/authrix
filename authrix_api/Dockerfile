@@ -31,8 +31,8 @@ RUN npm ci --only=production
 # Копируем собранное приложение из этапа сборки
 COPY --from=builder /app/dist ./dist
 
-# Открываем порт 3000
-EXPOSE 3000
+# Открываем порт 3001
+EXPOSE 3001
 
 # Запускаем приложение
 CMD ["npm", "run", "start:prod"]

@@ -26,6 +26,14 @@ npm run build
 npm run start:prod
 ```
 
+## Docker
+
+Поместите `.near-credentials` в `C:/users/User`
+
+```bash
+docker-compose up --build -d
+```
+
 ## API Методы
 
 ### Пользователи (User Controller)
