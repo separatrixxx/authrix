@@ -22,7 +22,7 @@ const baseStyles: StyleObject = {
         outlineOffset: '-2px',
         transitionDuration: '300ms',
         alignItems: 'center',
-        gap: '8px',
+        gap: '12px',
     },
     svg: {
         width: '18px',

@@ -11,6 +11,7 @@
     "check": "stylelint \"**/*.css\" --fix && next lint && next build"
   },
   "dependencies": {
+    "authrix-widget": "^1.0.1",
     "next": "14.0.3",
     "react": "^18",
     "react-dom": "^18"
@@ -23,7 +24,6 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
-    "authrix-widget": "^1.0.0",
     "axios": "^1.7.9",
     "date-fns": "^4.1.0",
     "elliptic": "^6.6.1",
