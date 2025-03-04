@@ -6,11 +6,11 @@ import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 
 
-export const HeaderWebLink = ({ text, link }: HeaderWebLinkProps): ReactNode => {
+export const HeaderWebLink = ({ text, link, onClick }: HeaderWebLinkProps): ReactNode => {
     const t = useTranslations('');
 
     return (
-        <Link href={link} aria-label={`${text} link`}>
+        <Link href={link} aria-label={`${text} link`} onClick={onClick}>
             <Htag tag='s' className={styles.headerLink}>
                 {t(text)}
             </Htag>

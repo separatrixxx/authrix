@@ -3,7 +3,12 @@
     "error500": "Нарушение работы сервера, ошибка 500",
     "authrix": "authrix",
     "extension": "Расширение",
-    "docs": "Документация",
+    "docs": "Дока",
     "github": "GitHub",
-    "switchLocale": "{locale, select, ru {Ru} en {En} other {Unknown}}"
+    "switchLocale": "{locale, select, ru {Ru} en {En} other {Unknown}}",
+    "Sidebar": {
+        "introduction": "Вступление",
+        "service_registration": "Регистрация сервиса",
+        "widget": "Виджет"
+    }
 }

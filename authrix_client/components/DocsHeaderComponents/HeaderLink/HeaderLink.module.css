@@ -1,12 +1,18 @@
 .headerLink {
 	transition-duration: 300ms;
 
-	color: var(--white) !important;
+	color: var(--darkLight);
+
+	font-weight: 900 !important;
 }
 
 .headerLink:active,
 .headerLink:hover {
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 
-	filter: brightness(0.9);
+	color: var(--primary);
+}
+
+.activeLink {
+	color: var(--primary) !important;
 }

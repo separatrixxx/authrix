@@ -5,5 +5,10 @@
     "extension": "Extension",
     "docs": "Docs",
     "github": "GitHub",
-    "switchLocale": "{locale, select, ru {Ru} en {En} other {Unknown}}"
+    "switchLocale": "{locale, select, ru {Ru} en {En} other {Unknown}}",
+    "Sidebar": {
+        "introduction": "Introduction",
+        "service_registration": "Service Registration",
+        "widget": "Widget"
+    }
 }
