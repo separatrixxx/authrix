@@ -19,7 +19,6 @@ export interface RecoverArguments extends GenerateArguments {
 }
 
 export interface ConfirmArguments extends Pick<GenerateArguments, 'username' | 'setIsLoading'> {
-    publicKeyHash: string,
     privateKey: string,
     serviceKey: string,
     setErrorPrivateKey: (e: boolean) => void,

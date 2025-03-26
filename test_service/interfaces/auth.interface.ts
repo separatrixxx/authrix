@@ -1,6 +1,7 @@
 export interface SignData {
     username: string;
-    publicKeyHash: string;
+    publicKey: string;
+    publicKeyHash: string,
     timestamp: number;
 }
 

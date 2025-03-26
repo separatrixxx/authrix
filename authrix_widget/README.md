@@ -12,19 +12,20 @@ npm install authrix-widget
 
 ```tsx
 interface SignData {
-    username: string;
-    publicKeyHash: string;
-    timestamp: number;
+    username: string,
+    publicKey: string,
+    publicKeyHash: string,
+    timestamp: number,
 }
 
 interface AuthResponseData {
-    signData: SignData;
-    userSignature: string;
-    serviceSignature: string;
+    signData: SignData,
+    userSignature: string,
+    serviceSignature: string,
 }
 
 interface AuthRejectedData {
-    message: 'AUTH_REJECTED';
+    message: 'AUTH_REJECTED',
 }
 
 type AuthWidgetData = AuthResponseData | AuthRejectedData;
@@ -32,8 +33,8 @@ type AuthWidgetData = AuthResponseData | AuthRejectedData;
 interface AuthrixWidgetProps {
     locale?: 'ru' | 'en',
     text?: {
-        buttonText?: string;
-        confirmationText?: string;
+        buttonText?: string,
+        confirmationText?: string,
     },
     isAuthenticating?: boolean,
     onAuthData?: (data: AuthWidgetData) => void,
@@ -83,6 +84,7 @@ const App: React.FC = () => {
 
 ```tsx
 import { AuthrixWidget } from 'authrix-widget';
+export { verifyUserSignature } from './validateUserSignature';
 import { useState } from 'react';
 import { createHMACSignature } from '../helpers/crypto.helper';
 import { AuthResponseData, AuthWidgetData } from '../interfaces/auth.interface';
@@ -110,8 +112,7 @@ const AuthPage: React.FC = () => {
         const dataString = JSON.stringify(signData);
     
         // Проверка подписи пользователя
-        const verificationSignature = await createHMACSignature(dataString, signData.publicKeyHash);
-        const isUserSignatureValid = userSignature === verificationSignature;
+        const isUserSignatureValid = verifyUserSignature(dataString, userSignature, signData.publicKey, signData.publicKeyHash);
     
         // Проверка подписи сервиса
         const verificationServiceSignature = await createHMACSignature(dataString, serviceKey);

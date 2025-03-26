@@ -5,10 +5,12 @@ import { ec } from "elliptic";
 import { ConfirmInterface } from "interfaces/confirm.interface";
 import { createHMACSignature } from "./crypto.helper";
 import { sha256 } from "js-sha256";
+import { AuthPublicKeyInterface } from "interfaces/auth.interface";
+import { checkUsername } from "./user.helper";
 
 
 export async function handleConfirm(args: ConfirmArguments) {
-    const { username, publicKeyHash, privateKey, serviceKey, setErrorPrivateKey, setIsLoading } = args;
+    const { username, privateKey, serviceKey, setErrorPrivateKey, setIsLoading } = args;
 
     try {
         if (!privateKey.trim()) {
@@ -25,17 +27,28 @@ export async function handleConfirm(args: ConfirmArguments) {
         const keyPair = secp256k1.keyFromPrivate(privateKey);
         const generatedPublicKey = keyPair.getPublic('hex');
 
+        const responseKey: AuthPublicKeyInterface = await checkUsername(username);
+
+        if (responseKey.publicKey !== sha256(generatedPublicKey)) {
+            setErrorPrivateKey(true);
+            ToastError(ru.wrong_private_key);
+
+            return;
+        }
+
         const signData: ConfirmInterface = {
             username: username || '',
-            publicKeyHash: publicKeyHash,
+            publicKey: generatedPublicKey,
+            publicKeyHash: responseKey.publicKey || '',
             timestamp: Date.now()
         };
 
-        const dataString = JSON.stringify(signData);
+        const dataString = JSON.stringify(signData);  
 
-        const generatedPublicKeyHash = sha256(generatedPublicKey);
-        
-        const userSignature = await createHMACSignature(dataString, generatedPublicKeyHash);
+        const hash = sha256(dataString);
+        const signature = keyPair.sign(hash);
+        const userSignature = signature.toDER('hex');
+
         const serviceSignature = await createHMACSignature(dataString, serviceKey);
 
         chrome.runtime.sendMessage({

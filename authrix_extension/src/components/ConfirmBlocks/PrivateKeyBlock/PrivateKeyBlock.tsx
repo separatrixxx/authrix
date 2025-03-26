@@ -9,7 +9,7 @@ import { handleConfirm } from 'helpers/confirm.helper';
 
 
 export const PrivateKeyBlock = ({ serviceKey }: PrivateKeyBlockProps): JSX.Element => {
-    const { username, publicKeyHash } = useAuthStore();
+    const { username } = useAuthStore();
 
     const [privateKey, setPrivateKey] = useState<string>('');
     const [errorPrivateKey, setErrorPrivateKey] = useState<boolean>(false);
@@ -22,7 +22,6 @@ export const PrivateKeyBlock = ({ serviceKey }: PrivateKeyBlockProps): JSX.Eleme
             <Button text={ru.confirm} isLoading={isLoading}
                 onClick={() => handleConfirm({
                     username: username || '',
-                    publicKeyHash: publicKeyHash || '',
                     privateKey,
                     serviceKey,
                     setErrorPrivateKey,

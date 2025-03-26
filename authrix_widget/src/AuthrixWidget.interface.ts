@@ -1,17 +1,18 @@
 export interface SignData {
-    username: string;
-    publicKeyHash: string;
-    timestamp: number;
+    username: string,
+    publicKey: string,
+    publicKeyHash: string,
+    timestamp: number,
 }
 
 export interface AuthResponseData {
-    signData: SignData;
-    userSignature: string;
-    serviceSignature: string;
+    signData: SignData,
+    userSignature: string,
+    serviceSignature: string,
 }
 
 export interface AuthRejectedData {
-    message: 'AUTH_REJECTED';
+    message: 'AUTH_REJECTED',
 }
 
 export type AuthWidgetData = AuthResponseData | AuthRejectedData;
@@ -19,8 +20,8 @@ export type AuthWidgetData = AuthResponseData | AuthRejectedData;
 export interface AuthrixWidgetProps {
     locale?: 'ru' | 'en',
     text?: {
-        buttonText?: string;
-        confirmationText?: string;
+        buttonText?: string,
+        confirmationText?: string,
     },
     isAuthenticating?: boolean,
     onAuthData?: (data: AuthWidgetData) => void,

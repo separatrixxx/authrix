@@ -4,7 +4,7 @@ import { createHMACSignature } from '../../helpers/crypto.helper';
 import { ToastError, ToastSuccess } from '../../components/Common/Toast/Toast';
 import { useState } from 'react';
 import { AuthResponseData, AuthWidgetData } from '../../interfaces/auth.interface';
-import { AuthrixWidget } from 'authrix-widget';
+import { AuthrixWidget, verifyUserSignature } from 'authrix-widget';
 
 
 export function isAuthResponseData(data: AuthWidgetData): data is AuthResponseData {
@@ -31,8 +31,7 @@ export const MainPage = (): JSX.Element => {
         const { signData, userSignature, serviceSignature } = data;
         const dataString = JSON.stringify(signData);
     
-        const verificationSignature = await createHMACSignature(dataString, signData.publicKeyHash);
-        const isUserSignatureValid = userSignature === verificationSignature;
+        const isUserSignatureValid = verifyUserSignature(dataString, userSignature, signData.publicKey, signData.publicKeyHash);
     
         const verificationServiceSignature = await createHMACSignature(dataString, serviceKey);
         const isServiceSignatureValid = serviceSignature === verificationServiceSignature;
