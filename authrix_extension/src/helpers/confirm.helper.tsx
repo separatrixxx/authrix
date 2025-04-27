@@ -10,7 +10,7 @@ import { checkUsername } from "./user.helper";
 
 
 export async function handleConfirm(args: ConfirmArguments) {
-    const { username, privateKey, serviceKey, setErrorPrivateKey, setIsLoading } = args;
+    const { username, privateKey, serviceKey, rememberKey, setErrorPrivateKey, setIsLoading } = args;
 
     try {
         if (!privateKey.trim()) {
@@ -18,6 +18,15 @@ export async function handleConfirm(args: ConfirmArguments) {
             ToastError(ru.enter_private_key);
 
             return;
+        }
+
+        if (rememberKey) {
+            await chrome.storage.local.set({
+                savedPrivateKey: {
+                    key: privateKey,
+                    timestamp: Date.now(),
+                }
+            });
         }
 
         setIsLoading(true);
