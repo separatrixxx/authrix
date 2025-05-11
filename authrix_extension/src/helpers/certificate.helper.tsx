@@ -4,7 +4,7 @@ import { CertificateInterface, CertificateResponse } from '../interfaces/certifi
 
 export async function getCertificateFromServer(domain: string): Promise<CertificateResponse> {
     try {
-        const response = await axios.get(`http://51.250.96.117:3001/service/certificate?domain=${domain}`);
+        const response = await axios.get(`http://51.250.96.117:3001/service/certificate?domain=${domain}&isServiceKey=true`);
         
         return response.data;
     } catch (error) {

@@ -20,15 +20,26 @@ export class ServiceController {
         required: true,
         type: String,
     })
+    @ApiQuery({
+        name: 'isServiceKey',
+        description: 'Return serviceKey for certificate (true/false)',
+        required: false,
+        type: Boolean,
+    })
     @ApiResponse({ status: 200, description: 'Certificate information received' })
     @ApiResponse({ status: 400, description: 'Data entry error' })
     @ApiResponse({ status: 500, description: 'Error while querying NEAR' })
-    async getCertificate(@Query('domain') domain: string): Promise<{ message: string; certificate?: CertificateInterface }> {
+    async getCertificate(
+        @Query('domain') domain: string,
+        @Query('isServiceKey') isServiceKey?: string,
+    ): Promise<{ message: string; certificate?: CertificateInterface }> {
         if (!domain) {
             throw new Error('Domain is required');
         }
 
-        const certificate = await this.serviceService.getCertificate(domain);
+        const useServiceKey = isServiceKey === 'true';
+
+        const certificate = await this.serviceService.getCertificate(domain, useServiceKey);
 
         if (certificate) {
             return { message: 'Certificate found', certificate };
