@@ -5,6 +5,8 @@ export interface SidebarProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivEl
     translations: {
         introduction: string,
         service_registration: string,
+        check_service: string,
         widget: string,
+        extension: string,
     },
 }

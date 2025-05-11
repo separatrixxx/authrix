@@ -28,12 +28,28 @@ export default function Sidebar({ translations }: SidebarProps) {
                     {translations.service_registration}
                 </Htag>
             </Link>
+            <Link href='/docs/check-service' className={cn(styles.sidebarLink, {
+                [styles.activeLink]: path === 'check-service',
+            })}
+                aria-label='check service link'>
+                <Htag tag='s'>
+                    {translations.check_service}
+                </Htag>
+            </Link>
             <Link href='/docs/widget' className={cn(styles.sidebarLink, {
                 [styles.activeLink]: path === 'widget',
             })}
                 aria-label='widget link'>
                 <Htag tag='s'>
                     {translations.widget}
+                </Htag>
+            </Link>
+            <Link href='/docs/extension' className={cn(styles.sidebarLink, {
+                [styles.activeLink]: path === 'extension',
+            })}
+                aria-label='extension link'>
+                <Htag tag='s'>
+                    {translations.extension}
                 </Htag>
             </Link>
         </div>

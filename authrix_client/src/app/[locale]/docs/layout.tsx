@@ -9,7 +9,9 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
   const translations = {
     introduction: t('introduction'),
     service_registration: t('service_registration'),
+    check_service: t('check_service'),
     widget: t('widget'),
+    extension: t('extension'),
   };
 
   return (

@@ -13,7 +13,7 @@ export async function createUser(username: string, publicKeyHash: string, mnemon
        return response.data;
    } catch (error) {
        if (axios.isAxiosError(error)) {
-           console.log('Error creating user:', error.response?.data);
+           console.error('Error creating user:', error.response?.data);
        }
        
        throw error;
@@ -27,7 +27,7 @@ export async function checkUsername(username: string) {
        return response.data;
    } catch (error) {
        if (axios.isAxiosError(error)) {
-           console.log('Error checking username:', error.response?.data);
+           console.error('Error checking username:', error.response?.data);
        }
 
        throw error;
@@ -41,7 +41,7 @@ export async function checkMnemonic(mnemonicHash: string) {
        return response.data;
    } catch (error) {
        if (axios.isAxiosError(error)) {
-           console.log('Error checking mnemonic:', error.response?.data);
+           console.error('Error checking mnemonic:', error.response?.data);
        }
 
        throw error;

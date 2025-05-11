@@ -1,0 +1,12 @@
+.registerForm {
+	display: grid;
+
+	width: 50%;
+	gap: 10px;
+}
+
+@media (max-width: 800px) {
+	.registerForm {
+		width: 90%;
+	}
+}

@@ -17,7 +17,6 @@ export const MainPage = (): JSX.Element => {
     const serviceKey = 'm7ems1v3q3sk3vxhrbh7tytatnhikj4n';
     
     const handleAuthData = async (data: AuthWidgetData) => {
-        console.log(data)
         if ('message' in data && data.message === 'AUTH_REJECTED') {
             setIsAuthenticating(false);
 

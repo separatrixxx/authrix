@@ -4,7 +4,7 @@
 	width: 220px;
 	padding: 20px 40px;
 	gap: 20px;
-	grid-template-rows: auto auto 1fr;
+	grid-template-rows: repeat(4, auto) 1fr;
 }
 
 .sidebarLink {

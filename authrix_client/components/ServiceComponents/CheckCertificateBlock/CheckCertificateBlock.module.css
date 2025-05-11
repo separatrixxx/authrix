@@ -1,0 +1,12 @@
+.checkCertificateBlock {
+	display: grid;
+
+	width: 50%;
+	gap: 10px;
+}
+
+@media (max-width: 800px) {
+	.checkCertificateBlock {
+		width: 90%;
+	}
+}

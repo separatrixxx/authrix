@@ -17,9 +17,10 @@ export const HeaderWeb = (): ReactNode => {
             <Htag tag='xl' className={styles.headerText}>
                 {t('authrix')}
             </Htag>
-            <HeaderWebLink text='extension' link='/' />
+            <HeaderWebLink text='extension' link='/authrix_extension.zip' isTargetBlank={true} />
             <HeaderWebLink text='docs' link='/docs' />
-            <HeaderWebLink text='github' link='https://github.com/separatrixxx/authrix' />
+            <HeaderWebLink text='github' link='https://github.com/separatrixxx/authrix'
+                isTargetBlank={true} />
             <Link href={'/' + otherLocale} prefetch={false} aria-label='switch locale'>
                 <Htag tag='s' className={cn(styles.headerText, styles.headerLink)}>
                     {t('switchLocale', { locale: otherLocale })}

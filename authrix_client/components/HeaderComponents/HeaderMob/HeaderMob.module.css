@@ -1,9 +1,14 @@
 .header {
 	position: relative;
+	z-index: 1;
 
 	width: calc(100% - 40px);
 	height: fit-content;
 	padding: 10px 20px;
+}
+
+.headerOpen {
+	padding-bottom: 30px;
 
 	background: var(--primary);
 }
@@ -26,7 +31,9 @@
 
 	width: calc(100% - 40px);
 	padding: 0 20px;
-	grid-template-rows: repeat(4, auto) 1fr;
+
+	background: var(--primary);
+	grid-template-rows: repeat(3, auto) 1fr;
 	gap: 20px;
 }
 

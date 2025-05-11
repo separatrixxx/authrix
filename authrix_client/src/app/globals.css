@@ -10,7 +10,7 @@ body {
 
 	background: var(--white);
 
-	font-family: 'Roboto', sans-serif;
+	font-family: var(--font-family);
 	-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 	-webkit-tap-highlight-color: transparent;
 }
@@ -49,9 +49,12 @@ a {
 
 :root {
 	--primary: #202020;
+	--black: #000;
 	--white: #FFF;
 	--light: #DDD;
 	--darkLight: #6B6B6B;
+	--link: #485CB6;
+	--confirm: #00BF43;
 	--error: #FF1500;
 	--font-family: 'Roboto', sans-serif;
 }

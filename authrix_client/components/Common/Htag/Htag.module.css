@@ -1,3 +1,4 @@
+.xxl,
 .xl,
 .l,
 .m,
@@ -9,6 +10,12 @@
 
 	font-style: normal;
 	line-height: normal;
+}
+
+.xxl {
+	font-size: 84px;
+	font-weight: 900;
+	line-height: 84px;
 }
 
 .xl {
@@ -33,6 +40,11 @@
 }
 
 @media (max-width: 1024px) {
+	.xxl {
+		font-size: 64px;
+		line-height: 64px;
+	}
+
 	.xl {
 		font-size: 48px;
 		line-height: 48px;
@@ -52,6 +64,11 @@
 }
 
 @media (max-width: 580px) {
+	.xxl {
+		font-size: 56px;
+		line-height: 56px;
+	}
+
 	.xl {
 		font-size: 32px;
 		line-height: 32px;
@@ -71,6 +88,11 @@
 }
 
 @media (max-width: 300px) {
+	.xxl {
+		font-size: 32px;
+		line-height: 32px;
+	}
+
 	.xl {
 		font-size: 28px;
 		line-height: 28px;

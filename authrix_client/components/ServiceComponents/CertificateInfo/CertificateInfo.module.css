@@ -1,0 +1,20 @@
+.certificateInfo {
+	display: grid;
+
+	width: 50%;
+	gap: 10px;
+}
+
+.spanInfo {
+	color: var(--primary);
+
+	font-weight: 600;
+}
+
+.statusActive {
+	color: var(--confirm);
+}
+
+.statusNotActive {
+	color: var(--error);
+}

@@ -2,6 +2,7 @@
     "error404": "Page not found, 404 error",
     "error500": "Server failure, error 500",
     "authrix": "authrix",
+    "slogan": "Identity\nBeyond Borders,\nBeyond Middlemen",
     "extension": "Extension",
     "docs": "Docs",
     "github": "GitHub",
@@ -9,6 +10,26 @@
     "Sidebar": {
         "introduction": "Introduction",
         "service_registration": "Service Registration",
-        "widget": "Widget"
-    }
+        "check_service": "Service Verification",
+        "widget": "Widget",
+        "extension": "Extension"
+    },
+    "domain": "Domain",
+    "service_name": "Service name",
+    "register_service": "Register service",
+    "enter_valid_domain": "Enter a valid domain",
+    "enter_service_name": "Enter the service name",
+    "service_successfully_egistered": "Service successfully registered",
+    "register_service_error": "An error occurred while registering the service",
+    "service_has_already_been_registered": "The service has already been registered",
+    "service_key_has_been_copied": "The service key has been copied",
+    "failed_to_copy_service_key": "Failed to copy service key",
+    "download_certificate": "Download certificate",
+    "check_cerfice": "Check service",
+    "domain_or_certificate_number": "Domain or certificate number",
+    "service_not_found": "Service not found, make sure the entered data is correct",
+    "service_successfully_found": "Service successfully found",
+    "enter_domain_or_certificate_number": "Enter domain or certificate number",
+    "certificate_number": "Certificate number",
+    "status": "Status"
 }

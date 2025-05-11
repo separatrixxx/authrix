@@ -1,0 +1,79 @@
+.markdownText {
+	display: grid;
+
+	width: 100%;
+}
+
+.markdownText pre {
+	width: fit-content;
+}
+
+.markdownText h1,
+.markdownText h2,
+.markdownText h3,
+.markdownText p {
+	width: fit-content;
+	max-width: 60vw;
+	margin: 10px 0;
+
+	font-family: var(--font-family);
+	overflow-wrap: break-word;
+}
+
+.markdownText h2 {
+	padding-top: 20px;
+}
+
+.markdownText p {
+	color: var(--darkLight);
+
+	font-size: 18px;
+}
+
+.markdownTable {
+	display: grid;
+	overflow-x: auto;
+
+	width: 60vw;
+}
+
+.markdownTable table {
+	margin: 1em 0;
+
+	border-collapse: collapse;
+}
+
+.markdownText th,
+.markdownText td {
+	padding: 8px 12px;
+
+	text-align: left;
+
+	border: 1px solid var(--light);
+}
+
+.markdownText th {
+	text-align: left;
+
+	color: var(--white);
+	background: var(--darkLight);
+
+	font-weight: bold;
+}
+
+@media (max-width: 800px) {
+	.markdownTable {
+		width: 87vw;
+	}
+
+	.markdownText h1,
+	.markdownText h2,
+	.markdownText h3,
+	.markdownText p {
+		max-width: 87vw;
+	}
+
+	.markdownText p {
+		font-size: 16px;
+	}
+}

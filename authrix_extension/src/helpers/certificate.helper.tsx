@@ -9,7 +9,7 @@ export async function getCertificateFromServer(domain: string): Promise<Certific
         return response.data;
     } catch (error) {
         if (axios.isAxiosError(error)) {
-            console.log('Error getting certificate from server:', error.response?.data);
+            console.error('Error getting certificate from server:', error.response?.data);
         }
         throw error;
     }
@@ -21,7 +21,7 @@ export async function getCertificateFromSite(domain: string): Promise<Certificat
         return response.data;
     } catch (error) {
         if (axios.isAxiosError(error)) {
-            console.log('Error getting certificate from site:', error.response?.data);
+            console.error('Error getting certificate from site:', error.response?.data);
         }
 
         throw error;

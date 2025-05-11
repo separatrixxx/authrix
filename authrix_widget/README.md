@@ -84,7 +84,7 @@ const App: React.FC = () => {
 
 ```tsx
 import { AuthrixWidget } from 'authrix-widget';
-export { verifyUserSignature } from './validateUserSignature';
+import { verifyUserSignature } from './validateUserSignature';
 import { useState } from 'react';
 import { createHMACSignature } from '../helpers/crypto.helper';
 import { AuthResponseData, AuthWidgetData } from '../interfaces/auth.interface';

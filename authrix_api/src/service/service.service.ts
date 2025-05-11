@@ -74,6 +74,7 @@ export class ServiceService {
             if (certificate === 'null') return null;
 
             const parsedCertificate = JSON.parse(certificate);
+            delete parsedCertificate.serviceKey;
             
             return await this.checkAndUpdateCertificateStatus(parsedCertificate);
         } catch (error) {
@@ -110,6 +111,7 @@ export class ServiceService {
             if (certificate === 'null') return null;
 
             const parsedCertificate = JSON.parse(certificate);
+            delete parsedCertificate.serviceKey;
             
             return await this.checkAndUpdateCertificateStatus(parsedCertificate);
         } catch (error) {
@@ -123,7 +125,6 @@ export class ServiceService {
     async registerService(domain: string, name: string): Promise<{ message: string; certificate?: CertificateInterface }> {
         try {
             const existingCert = await this.getCertificate(domain);
-            console.log(existingCert)
 
             if (existingCert) {
                 const currentTime = Date.now();

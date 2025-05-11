@@ -1,0 +1,47 @@
+.certificateBlock {
+	display: grid;
+
+	width: 50%;
+	gap: 10px;
+}
+
+.serviceKey {
+	overflow-x: auto;
+
+	width: calc(100% - 32px);
+
+	padding: 15px 16px;
+
+	cursor: pointer;
+	transition-duration: 300ms;
+
+	color: var(--primary) !important;
+	border: none;
+	border-radius: 8px;
+	outline: 2px solid var(--light);
+	outline-offset: -2px;
+	background: var(--light) !important;
+
+	font-size: 18px;
+	font-weight: 600 !important;
+}
+
+.inpuserviceKey:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	filter: brightness(0.9);
+}
+
+@media (min-width: 1024px) {
+	.inpuserviceKey:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		filter: brightness(0.9);
+	}
+}
+
+@media (max-width: 800px) {
+	.certificateBlock {
+		width: 90%;
+	}
+}

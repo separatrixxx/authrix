@@ -32,7 +32,6 @@ export const HeaderMob = ({ translations, otherLocale }: HeaderMobProps): ReactN
                             animate={{ height: 'fit-content', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.3 }}>
-                            <HeaderWebLink text='extension' link='/' onClick={() => setIsMenuOpen(false)} />
                             <HeaderWebLink text='docs' link='/docs' onClick={() => setIsMenuOpen(false)} />
                             <HeaderWebLink text='github' link='https://github.com/separatrixxx/authrix'
                                 onClick={() => setIsMenuOpen(false)} />

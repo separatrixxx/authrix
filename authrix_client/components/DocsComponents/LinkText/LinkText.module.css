@@ -1,0 +1,22 @@
+.linkText {
+	width: fit-content;
+
+	cursor: pointer;
+	transition-duration: 300ms;
+
+	color: var(--link);
+}
+
+.linkText:active {
+	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+	filter: brightness(0.7);
+}
+
+@media (min-width: 1024px) {
+	.linkText:hover {
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+		filter: brightness(0.7);
+	}
+}

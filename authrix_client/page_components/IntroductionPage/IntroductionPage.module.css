@@ -1,0 +1,25 @@
+.wrapper {
+	display: grid;
+	overflow-x: hidden;
+	overflow-y: auto;
+	align-items: start;
+
+	width: 100%;
+	height: calc(100vh - 78.5px);
+
+	justify-items: left;
+}
+
+@media (max-width: 1024px) {
+	.wrapper {
+		height: calc(100vh - 64px);
+	}
+}
+
+@media (max-width: 800px) {
+	.wrapper {
+		width: calc(100% - 40px);
+		height: calc(100vh - 49.5px);
+		padding: 0 20px 0 20px;
+	}
+}

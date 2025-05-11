@@ -2,6 +2,7 @@
     "error404": "Страница не найдена, ошибка 404",
     "error500": "Нарушение работы сервера, ошибка 500",
     "authrix": "authrix",
+    "slogan": "Identity\nBeyond Borders,\nBeyond Middlemen",
     "extension": "Расширение",
     "docs": "Дока",
     "github": "GitHub",
@@ -9,6 +10,26 @@
     "Sidebar": {
         "introduction": "Вступление",
         "service_registration": "Регистрация сервиса",
-        "widget": "Виджет"
-    }
+        "check_service": "Проверка сервиса",
+        "widget": "Виджет",
+        "extension": "Расширение"
+    },
+    "domain": "Домен",
+    "service_name": "Имя сервиса",
+    "register_service": "Регистрация сервиса",
+    "enter_valid_domain": "Введите корректный домен",
+    "enter_service_name": "Введите имя сервиса",
+    "service_successfully_egistered": "Сервис успешно зарегистрирован",
+    "register_service_error": "Произошла ошибка при регистрации сервиса",
+    "service_has_already_been_registered": "Сервис уже был зарегистрирован",
+    "service_key_has_been_copied": "Ключ сервиса был скопирован",
+    "failed_to_copy_service_key": "Не удалось скопировать ключ сервиса",
+    "download_certificate": "Скачать сертификат",
+    "check_cerfice": "Проверить сервис",
+    "domain_or_certificate_number": "Домен или имя сертификата",
+    "service_not_found": "Сервис не найден, убедитесь в корректности введённых данных",
+    "service_successfully_found": "Сервис успешно найден",
+    "enter_domain_or_certificate_number": "Введите домен или номер сертификата",
+    "certificate_number": "Номер сертификата",
+    "status": "Статус"
 }

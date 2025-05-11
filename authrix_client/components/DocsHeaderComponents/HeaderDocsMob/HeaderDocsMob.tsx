@@ -45,8 +45,14 @@ export const HeaderDocsMob = ({ translations, otherLocale }: HeaderDocsMobProps)
                             <HeaderLink text='service_registration' link='/docs/service-registration'
                                 isActive={path === 'service-registration'}
                                 onClick={() => setIsMenuOpen(false)} />
+                            <HeaderLink text='check_service' link='/docs/check-service'
+                                isActive={path === 'check-service'}
+                                onClick={() => setIsMenuOpen(false)} />
                             <HeaderLink text='widget' link='/docs/widget'
                                 isActive={path === 'widget'}
+                                onClick={() => setIsMenuOpen(false)} />
+                            <HeaderLink text='extension' link='/docs/extension'
+                                isActive={path === 'extension'}
                                 onClick={() => setIsMenuOpen(false)} />
                             <Link href={'/' + otherLocale + '/docs/introduction'} prefetch={false} aria-label='switch locale'
                                 onClick={() => setIsMenuOpen(false)}>
