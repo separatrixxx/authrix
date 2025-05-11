@@ -14,7 +14,7 @@ export function isAuthResponseData(data: AuthWidgetData): data is AuthResponseDa
 export const MainPage = (): JSX.Element => {
     const [isAuthenticating, setIsAuthenticating] = useState<boolean>(false);
     
-    const serviceKey = 'm7ems1v3q3sk3vxhrbh7tytatnhikj4n';
+    const serviceKey = 'un1i27qo0tl5zk02ursjxpomz7siuca6';
     
     const handleAuthData = async (data: AuthWidgetData) => {
         if ('message' in data && data.message === 'AUTH_REJECTED') {

@@ -6,7 +6,7 @@ export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
 
   const domainOrCert = searchParams.get("query");
-  const DOMAIN_REGEX = /^[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
+  const DOMAIN_REGEX = /^([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
 
   if (!domainOrCert) {
     return NextResponse.json({ error: "no_query" }, { status: 400 });

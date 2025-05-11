@@ -1,7 +1,7 @@
 {
-    "certNumber": "AUTHRIX-U032-V9LS-4A4M",
-    "domain": "localhost:3000",
+    "certNumber": "AUTHRIX-6QWL-MRPS-BRMX",
+    "domain": "authrix-test-service.vercel.app",
     "status": "active",
-    "issuedAt": 1739033880244,
-    "expiresAt": 1770569880244
+    "issuedAt": 1747001478823,
+    "expiresAt": 1778537478823
 }

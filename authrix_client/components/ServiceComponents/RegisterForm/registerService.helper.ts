@@ -3,7 +3,7 @@ import { ToastError, ToastSuccess } from "../../Common/Toast/Toast";
 import { RegisterService, ServiceCertificate } from "./registerService.interface";
 
 
-const DOMAIN_REGEX = /^[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$/;
+const DOMAIN_REGEX = /^([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}$/;
 
 export async function registerService(args: RegisterService) {
     const { domain, serviceName, translations, setErrorDomain, setErrorServiceName, setIsLoading, setCertificate } = args;
