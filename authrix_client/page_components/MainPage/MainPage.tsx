@@ -1,6 +1,4 @@
-'use client'
 import styles from './MainPage.module.css';
-import { Toaster } from 'react-hot-toast';
 import { ReactNode } from 'react';
 import { Header } from '../../components/HeaderComponents/Header/Header';
 import Image from 'next/image';
