@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export async function createUser(username: string, publicKeyHash: string, mnemonicHash: string, isChange: boolean) {
    try {
-       const response = await axios.post('http://localhost:3001/user/create', {
+       const response = await axios.post('http://51.250.96.117:3001/user/create', {
            username,
            publicKeyHash,
            mnemonicHash,
@@ -22,7 +22,7 @@ export async function createUser(username: string, publicKeyHash: string, mnemon
 
 export async function checkUsername(username: string) {
    try {
-       const response = await axios.get('http://localhost:3001/user/publicKey?username=' + username);
+       const response = await axios.get('http://51.250.96.117:3001/user/publicKey?username=' + username);
 
        return response.data;
    } catch (error) {
@@ -36,7 +36,7 @@ export async function checkUsername(username: string) {
 
 export async function checkMnemonic(mnemonicHash: string) {
    try {
-       const response = await axios.get('http://localhost:3001/user/username?mnemonicHash=' + mnemonicHash);
+       const response = await axios.get('http://51.250.96.117:3001/user/username?mnemonicHash=' + mnemonicHash);
 
        return response.data;
    } catch (error) {

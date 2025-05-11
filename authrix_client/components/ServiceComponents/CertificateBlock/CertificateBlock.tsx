@@ -11,6 +11,7 @@ export const CertificateBlock = ({ certificate }: CertificateBlockProps): ReactN
     const t = useTranslations('');
 
     const { certNumber, domain, serviceKey, status, issuedAt, expiresAt } = certificate;
+    console.log(certificate)
 
     const handleDownload = () => {
 

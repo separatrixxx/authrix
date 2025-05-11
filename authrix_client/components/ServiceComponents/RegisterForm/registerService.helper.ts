@@ -28,7 +28,7 @@ export async function registerService(args: RegisterService) {
     setIsLoading(true);
 
     try {
-        const response = await axios.post(process.env.NEXT_PUBLIC_DOMAIN + '/service/register', {
+        const response = await axios.post('/api/registerService', {
             domain: domain,
             name: serviceName,
         });

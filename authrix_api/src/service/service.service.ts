@@ -48,7 +48,7 @@ export class ServiceService {
 
     // Get certificate information from NEAR
     // Получение информации о сертификате из NEAR
-    async getCertificate(domain: string): Promise<CertificateInterface | null> {
+    async getCertificate(domain: string, isServiceKey?: boolean): Promise<CertificateInterface | null> {
         try {
             const near = await createNearConnection(this.networkId);
 
@@ -74,7 +74,10 @@ export class ServiceService {
             if (certificate === 'null') return null;
 
             const parsedCertificate = JSON.parse(certificate);
-            delete parsedCertificate.serviceKey;
+
+            if (!isServiceKey) {
+                delete parsedCertificate.serviceKey;
+            }
             
             return await this.checkAndUpdateCertificateStatus(parsedCertificate);
         } catch (error) {
@@ -124,7 +127,7 @@ export class ServiceService {
     // Регистрация сервиса и генерация сертификата в NEAR
     async registerService(domain: string, name: string): Promise<{ message: string; certificate?: CertificateInterface }> {
         try {
-            const existingCert = await this.getCertificate(domain);
+            const existingCert = await this.getCertificate(domain, true);
 
             if (existingCert) {
                 const currentTime = Date.now();
@@ -156,7 +159,7 @@ export class ServiceService {
                 attachedDeposit: BigInt(0),
             });
 
-            const newCert = await this.getCertificate(domain);
+            const newCert = await this.getCertificate(domain, true);
 
             return {
                 message: 'Service registered successfully',
