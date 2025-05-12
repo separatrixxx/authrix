@@ -1,14 +1,11 @@
 import { LinkTextProps } from './LinkText.props';
 import styles from './LinkText.module.css';
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
 
 
-export default function LinkText({ link, text }: LinkTextProps) {
-    const locale = useLocale();
-    
+export default function LinkText({ link, text }: LinkTextProps) {    
     return (
-        <Link href={link} className={styles.linkText} locale={locale}>
+        <Link href={link} className={styles.linkText}>
             {text}
         </Link>
     );
