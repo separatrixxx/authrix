@@ -71,6 +71,11 @@
 	.markdownText h3,
 	.markdownText p {
 		max-width: 87vw;
+		margin: 5px 0;
+	}
+
+	.markdownText h2 {
+		padding-top: 10px;
 	}
 
 	.markdownText p {

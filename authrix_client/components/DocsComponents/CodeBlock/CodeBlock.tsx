@@ -17,6 +17,7 @@ export default function CodeBlock({ children, className }: CodeBlockProps) {
             customStyle={{
                 borderRadius: 10,
                 fontSize: 14,
+                margin: 0,
                 width: `${width <= 800 ? '87vw' : '60vw'}`,
                 boxSizing: 'border-box',
                 whiteSpace: 'pre-wrap',
