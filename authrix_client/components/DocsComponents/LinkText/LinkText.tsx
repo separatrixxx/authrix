@@ -1,3 +1,4 @@
+'use client'
 import { LinkTextProps } from './LinkText.props';
 import styles from './LinkText.module.css';
 import Link from 'next/link';
