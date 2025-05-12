@@ -27,6 +27,8 @@ export const useAuthStore = create<AuthStoreInterface>((set) => ({
 
   logout: async () => {
     await chrome.storage.local.remove('userData');
+    await chrome.storage.local.remove('savedPrivateKey');
+
     set({ isAuthorized: false, username: null, publicKeyHash: null });
   },
 }));

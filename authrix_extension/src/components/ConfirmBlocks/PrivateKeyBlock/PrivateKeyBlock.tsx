@@ -14,6 +14,7 @@ export const PrivateKeyBlock = ({ serviceKey }: PrivateKeyBlockProps): JSX.Eleme
     const [privateKey, setPrivateKey] = useState<string>('');
     const [errorPrivateKey, setErrorPrivateKey] = useState<boolean>(false);
     const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [isKeyFromStorage, setIsKeyFromStorage] = useState<boolean>(false);
 
     useEffect(() => {
         const loadSavedKey = async () => {
@@ -24,6 +25,7 @@ export const PrivateKeyBlock = ({ serviceKey }: PrivateKeyBlockProps): JSX.Eleme
 
                 if (Date.now() - timestamp < 30 * 24 * 60 * 60 * 1000) {
                     setPrivateKey(key);
+                    setIsKeyFromStorage(true);
                 } else {
                     await chrome.storage.local.remove('savedPrivateKey');
                 }

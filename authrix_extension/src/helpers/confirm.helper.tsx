@@ -60,7 +60,7 @@ export async function handleConfirm(args: ConfirmArguments) {
 
         const serviceSignature = await createHMACSignature(dataString, serviceKey);
 
-        chrome.runtime.sendMessage({
+        await chrome.runtime.sendMessage({
             type: 'AUTH_RESPONSE',
             data: {
                 signData,
@@ -69,6 +69,7 @@ export async function handleConfirm(args: ConfirmArguments) {
             },
         });
 
+        await new Promise(resolve => setTimeout(resolve, 300));
         window.close();
     } catch (error) {
         console.error(ru.wrong_private_key + ': ' + error);
