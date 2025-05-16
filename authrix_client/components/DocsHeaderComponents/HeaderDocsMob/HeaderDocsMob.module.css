@@ -1,6 +1,8 @@
 .header {
 	position: relative;
 
+	z-index: 10;
+
 	display: grid;
 	align-items: center;
 
@@ -27,6 +29,8 @@
 
 .headerDiv {
 	position: absolute;
+
+	z-index: 10;
 	top: 43.2px;
 	left: 0;
 
@@ -34,10 +38,10 @@
 
 	width: calc(100% - 40px);
 	padding: 20px;
-	grid-template-rows: repeat(4, auto) 1fr;
-	gap: 20px;
 
 	background: var(--white);
+	grid-template-rows: repeat(4, auto) 1fr;
+	gap: 20px;
 }
 
 .headerIcon {

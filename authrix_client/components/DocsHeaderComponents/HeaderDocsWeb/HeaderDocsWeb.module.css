@@ -1,4 +1,6 @@
 .header {
+	z-index: 10;
+
 	display: grid;
 	align-items: center;
 
@@ -7,9 +9,9 @@
 	padding: 20px 40px;
 
 	border-bottom: 1px solid var(--light);
-	grid-template-columns: 1fr auto;
 
 	background: var(--white);
+	grid-template-columns: 1fr auto;
 	justify-items: left;
 }
 
